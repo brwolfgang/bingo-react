@@ -1,5 +1,5 @@
 import React from "react";
-import Letreiro from "./componentes/Letreiro";
+import Letreiro from "./componentes/Letreiro.jsx";
 
 class App extends React.Component {
     state = {
@@ -18,9 +18,10 @@ class App extends React.Component {
                     <div className="card-body text-center">
                         <div className="form-row">
                             <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="">Nome do Bingo</label>
-                                    <input type="text" value={this.state.palavraBingo} onChange={(e) => this.setState({palavraBingo : e.target.value})}/>
+                                <div className="form-group text-left">
+                                    <label htmlFor="inputPalavraBingo">Nome do Bingo</label>
+                                    <input className="form-control" id="inputPalavraBingo" type="text" value={this.state.palavraBingo} onChange={(e) => this.setState({palavraBingo : e.target.value})}/>
+                                    <small id="inputHelp" class="form-text text-muted">Palavras com 5 letras funcionam bem 👍</small>
                                 </div>
                             </div>
                         </div>
