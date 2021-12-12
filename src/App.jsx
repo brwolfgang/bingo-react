@@ -1,37 +1,75 @@
 import React from "react";
+import Configuracao from "./componentes/Configuracao.jsx";
+import AcaoSorteio from "./componentes/AcaoSorteio.jsx";
+import NumeroSorteado from "./componentes/NumeroSorteado.jsx";
 import ColunaNumerica from "./componentes/ColunaNumerica.jsx";
 import HeaderLetreiro from "./componentes/HeaderLetreiro.jsx";
 
 class App extends React.Component {
     state = {
-        nomeBingo: 'Bingo da Galera',
-        palavraBingo: 'bingo'
+        palavraBingo: 'bingo',
+        numeros: [],
+        qtdeNumerosSorteados: 0,
+        numeroRecemSorteado: null
     };
 
     componentDidMount() {
-        console.log('Estamos prontos para começar')
+        let arrayNumeros = [];
+
+        for (let i = 0; i < 75; i++) {
+            arrayNumeros.push({
+                valor: i + 1,
+                sorteado: false,
+                letra: null
+            })
+        }
+
+        this.setState({ numeros: arrayNumeros })
+    }
+
+    getRandomInt = (max) => {
+        return Math.floor(Math.random() * max);
+    }
+
+    sortearNumero = () => {
+        if (this.state.qtdeNumerosSorteados === 75) {
+            alert('Todos os números foram sorteados!')
+            return;
+        }
+
+        const novoArrayNumeros = [...this.state.numeros]
+        let numeroBingo = null;
+
+        while (true) {
+            let numeroSorteado = this.getRandomInt(75) + 1;
+
+            numeroBingo = novoArrayNumeros[numeroSorteado - 1];
+
+            if (!numeroBingo.sorteado) {
+                console.log('Numero sorteado', numeroBingo);
+
+                numeroBingo.sorteado = true;
+                break;
+            }
+        }
+
+        this.setState({ numeros: novoArrayNumeros, qtdeNumerosSorteados: this.state.qtdeNumerosSorteados + 1, numeroRecemSorteado: numeroBingo });
+    }
+
+    handleChangePalavraBingo = (novaPalavraBingo) => {
+        this.setState({ palavraBingo: novaPalavraBingo.trim() })
     }
 
     render() {
         return (
             <div className='container mt-3'>
-                <div className="card" style={{ width: '100%' }}>
-                    <div className="card-body text-center">
-                        <div className="form-row">
-                            <div className="col-12">
-                                <div className="form-group text-left">
-                                    <label htmlFor="inputPalavraBingo">Nome do Bingo</label>
-                                    <input className="form-control" id="inputPalavraBingo" type="text" value={this.state.palavraBingo} onChange={(e) => this.setState({ palavraBingo: e.target.value })} />
-                                    <small id="inputHelp" className="form-text text-muted">Palavras com 5 letras funcionam melhor 👍</small>
-                                </div>
-                            </div>
-                        </div>
+                <Configuracao palavraBingo={this.state.palavraBingo} handleChangePalavraBingo={this.handleChangePalavraBingo} />
 
-                        <div className="form-row">
-                            <div className="col-12 text-center">
-                                <h5 className="card-title">{this.state.nomeBingo}</h5>
-                            </div>
-                        </div>
+                <div className="card border-secondary" style={{ width: '100%' }}>
+                    <div className="card-body text-center">
+                        <AcaoSorteio sortearNumero={this.sortearNumero} />
+
+                        {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
 
                         <div className="form-row text-center">
                             <div className="col-1"></div>
@@ -47,7 +85,14 @@ class App extends React.Component {
                             <div className="col-1"></div>
 
                             {this.state.palavraBingo.split('').map((letra, index) => {
-                                return <ColunaNumerica key={index}/>
+                                const posicaoInicial = index * 15;
+                                const posicaoFinal = posicaoInicial + 15;
+
+                                const numeros = this.state.numeros.slice(posicaoInicial, posicaoFinal);
+
+                                numeros.forEach((numero) => numero.letra = letra.toUpperCase())
+
+                                return <ColunaNumerica key={index} numeros={numeros} />
                             })}
 
                             <div className="col-1"></div>
