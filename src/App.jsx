@@ -20,7 +20,8 @@ class App extends React.Component {
             arrayNumeros.push({
                 valor: i + 1,
                 sorteado: false,
-                letra: null
+                letra: null,
+                ordem: null
             })
         }
 
@@ -49,6 +50,7 @@ class App extends React.Component {
                 console.log('Numero sorteado', numeroBingo);
 
                 numeroBingo.sorteado = true;
+                numeroBingo.ordem = this.state.qtdeNumerosSorteados + 1;
                 break;
             }
         }
