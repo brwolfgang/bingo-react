@@ -38,13 +38,12 @@ class App extends React.Component {
             return;
         }
 
-        const novoArrayNumeros = [...this.state.numeros]
         let numeroBingo = null;
 
         while (true) {
             let numeroSorteado = this.getRandomInt(75) + 1;
 
-            numeroBingo = novoArrayNumeros[numeroSorteado - 1];
+            numeroBingo = this.state.numeros[numeroSorteado - 1];
 
             if (!numeroBingo.sorteado) {
                 console.log('Numero sorteado', numeroBingo);
@@ -55,7 +54,7 @@ class App extends React.Component {
             }
         }
 
-        this.setState({ numeros: novoArrayNumeros, qtdeNumerosSorteados: this.state.qtdeNumerosSorteados + 1, numeroRecemSorteado: numeroBingo });
+        this.setState({ qtdeNumerosSorteados: this.state.qtdeNumerosSorteados + 1, numeroRecemSorteado: numeroBingo });
     }
 
     handleChangePalavraBingo = (novaPalavraBingo) => {
