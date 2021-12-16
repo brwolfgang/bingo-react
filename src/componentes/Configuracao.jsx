@@ -11,7 +11,7 @@ const Configuracao = ({ palavraBingo, handleChangePalavraBingo }) => {
 
             if (!values.palavra || !values.palavra.trim()) {
                 errors.palavra = "É necessário definir uma palavra! 👀";
-            } else if(values.palavra.trim().length != 5) {
+            } else if(values.palavra.trim().length !== 5) {
                 errors.palavra = "A palavra precisa ter 5 caracteres! 👀";
             }
 
