@@ -39,8 +39,7 @@ const Configuracao = ({ palavraBingo, handleChangePalavraBingo }) => {
                 <div className="col-12">
                     <div className="form-group text-left">
                         <label htmlFor="inputPalavraBingo">Nome do Bingo</label>
-                        <input className="form-control" id="palavra" type="text" 
-                        value={formik.values.palavra} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                        <input className="form-control" id="palavra" type="text" {...formik.getFieldProps('palavra')}/>
                         {formik.touched.palavra && formik.errors.palavra ? <div>{formik.errors.palavra}</div> : null}
                         <small id="inputHelp" className="form-text text-muted">Palavras com 5 letras funcionam melhor 👍</small>
                     </div>
