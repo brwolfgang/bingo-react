@@ -1,3 +1,4 @@
+import './index.css'
 import React from "react";
 import AcaoSorteio from "./componentes/AcaoSorteio.jsx";
 import NumeroSorteado from "./componentes/NumeroSorteado.jsx";
