@@ -1,11 +1,16 @@
 import React from "react";
 
+const estiloLetra = {
+    fontSize: '36px',
+    fontFamily: 'monospace'
+}
+
 const HeaderLetreiro = (props) => {
     return (
         <div className="col-2">
             <div className="form-group">
                 <dt>Letra</dt>
-                <dd>{props.letra.toUpperCase()}</dd>
+                <dd style={estiloLetra}>{props.letra.toUpperCase()}</dd>
             </div>
         </div>
     )

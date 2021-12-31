@@ -1,5 +1,4 @@
 import React from "react";
-import Configuracao from "./componentes/Configuracao.jsx";
 import AcaoSorteio from "./componentes/AcaoSorteio.jsx";
 import NumeroSorteado from "./componentes/NumeroSorteado.jsx";
 import ColunaNumerica from "./componentes/ColunaNumerica.jsx";
@@ -64,8 +63,6 @@ class App extends React.Component {
     render() {
         return (
             <div className='container mt-3'>
-                <Configuracao palavraBingo={this.state.palavraBingo} handleChangePalavraBingo={this.handleChangePalavraBingo} />
-
                 <div className="card border-secondary" style={{ width: '100%' }}>
                     <div className="card-body text-center">
                         <AcaoSorteio sortearNumero={this.sortearNumero} />
