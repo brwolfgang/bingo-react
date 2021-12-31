@@ -2,13 +2,7 @@ import React from "react";
 
 const AcaoSorteio = ({sortearNumero}) => {
     return (
-        <div className="form-row">
-            <div className="col-12">
-                <div className="form-group">
-                    <button className="btn btn-primary" onClick={sortearNumero}>Sortear Número!</button>
-                </div>
-            </div>
-        </div>
+        <button className="text-white bg-teal-500 hover:bg-teal-700 px-2 py-1 rounded-md" onClick={sortearNumero}>Sortear Número!</button>
     )
 }
 

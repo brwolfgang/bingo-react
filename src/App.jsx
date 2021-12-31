@@ -63,39 +63,37 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className='container mt-3'>
-                <div className="card border-secondary" style={{ width: '100%' }}>
-                    <div className="card-body text-center">
-                        <AcaoSorteio sortearNumero={this.sortearNumero} />
+            <div className='flex flex-col justify-center items-center m-2'>
+                <div className="card-body text-center">
+                    <AcaoSorteio sortearNumero={this.sortearNumero} />
 
-                        {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
+                    {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
 
-                        <div className="form-row text-center">
-                            <div className="col-1"></div>
+                    <div className="form-row text-center">
+                        <div className="col-1"></div>
 
-                            {this.state.palavraBingo.split('').map((letra, index) => {
-                                return <HeaderLetreiro key={index} letra={letra} />
-                            })}
+                        {this.state.palavraBingo.split('').map((letra, index) => {
+                            return <HeaderLetreiro key={index} letra={letra} />
+                        })}
 
-                            <div className="col-1"></div>
-                        </div>
+                        <div className="col-1"></div>
+                    </div>
 
-                        <div className="form-row text-center">
-                            <div className="col-1"></div>
+                    <div className="form-row text-center">
+                        <div className="col-1"></div>
 
-                            {this.state.palavraBingo.split('').map((letra, index) => {
-                                const posicaoInicial = index * 15;
-                                const posicaoFinal = posicaoInicial + 15;
+                        {this.state.palavraBingo.split('').map((letra, index) => {
+                            const posicaoInicial = index * 15;
+                            const posicaoFinal = posicaoInicial + 15;
 
-                                const numeros = this.state.numeros.slice(posicaoInicial, posicaoFinal);
+                            const numeros = this.state.numeros.slice(posicaoInicial, posicaoFinal);
 
-                                numeros.forEach((numero) => numero.letra = letra.toUpperCase())
+                            numeros.forEach((numero) => numero.letra = letra.toUpperCase())
 
-                                return <ColunaNumerica key={index} numeros={numeros} />
-                            })}
+                            return <ColunaNumerica key={index} numeros={numeros} />
+                        })}
 
-                            <div className="col-1"></div>
-                        </div>
+                        <div className="col-1"></div>
                     </div>
                 </div>
             </div>
