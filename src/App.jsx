@@ -63,38 +63,29 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className='flex flex-col justify-center items-center m-2'>
-                <div className="card-body text-center">
-                    <AcaoSorteio sortearNumero={this.sortearNumero} />
+            <div className="flex flex-col justify-center items-center m-2 text-center w-screen">
+                <AcaoSorteio sortearNumero={this.sortearNumero} />
 
-                    {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
+                {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
 
-                    <div className="form-row text-center">
-                        <div className="col-1"></div>
+                <div className="flex flex-row flex-nowrap justify-around items-center m-2 md:w-3/4 lg:w-1/2 bg-teal-200 rounded-md">
+                    {this.state.palavraBingo.split('').map((letra, index) => {
+                        return <HeaderLetreiro key={index} letra={letra} />
+                    })}
+                </div>
 
-                        {this.state.palavraBingo.split('').map((letra, index) => {
-                            return <HeaderLetreiro key={index} letra={letra} />
-                        })}
+                <div className="flex flex-row flex-nowrap justify-around m-2 md:w-3/4 lg:w-1/2">
+                    {this.state.palavraBingo.split('').map((letra, index) => {
+                        const posicaoInicial = index * 15;
+                        const posicaoFinal = posicaoInicial + 15;
 
-                        <div className="col-1"></div>
-                    </div>
+                        const numeros = this.state.numeros.slice(posicaoInicial, posicaoFinal);
 
-                    <div className="form-row text-center">
-                        <div className="col-1"></div>
+                        numeros.forEach((numero) => numero.letra = letra.toUpperCase())
 
-                        {this.state.palavraBingo.split('').map((letra, index) => {
-                            const posicaoInicial = index * 15;
-                            const posicaoFinal = posicaoInicial + 15;
+                        return <ColunaNumerica key={index} numeros={numeros} numeroRecemSorteado={this.state.numeroRecemSorteado}/>
+                    })}
 
-                            const numeros = this.state.numeros.slice(posicaoInicial, posicaoFinal);
-
-                            numeros.forEach((numero) => numero.letra = letra.toUpperCase())
-
-                            return <ColunaNumerica key={index} numeros={numeros} />
-                        })}
-
-                        <div className="col-1"></div>
-                    </div>
                 </div>
             </div>
         )
