@@ -9,7 +9,7 @@ const ColunaNumerica = ({numeros, numeroRecemSorteado}) => {
 
                 if (ehRecemSorteado) {
                     return (
-                        <div className="px-2 py-1 bg-yellow-400 rounded-md">
+                        <div className="bg-yellow-400 rounded-md shadow">
                             {gerarInfoNumeros(numero)}
                         </div>
                     );

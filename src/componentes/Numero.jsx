@@ -4,7 +4,7 @@ class Numero extends React.Component {
     render() {
         if (this.props.isSorteado) {
             return (
-                <div className="flex flex-row flex-nowrap items-center" title={`Este foi o ${this.props.ordem}º número sorteado`}>
+                <div className="flex flex-row flex-nowrap items-center px-2 py-1" title={`Este foi o ${this.props.ordem}º número sorteado`}>
                     <p className="font-mono font-bold">{this.props.valor}</p>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-600" viewBox="0 0 20 20"
                          fill="currentColor">

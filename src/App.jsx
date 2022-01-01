@@ -63,19 +63,19 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="flex flex-row justify-center items-center w-screen h-screen">
-                <div className="flex flex-col justify-center items-center m-2 text-center w-screen">
+            <div className="flex flex-col justify-center items-center w-screen h-screen">
+                <div className="flex flex-col justify-center items-center m-2 text-center w-full">
                     <AcaoSorteio sortearNumero={this.sortearNumero} />
 
                     {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
 
-                    <div className="flex flex-row flex-nowrap justify-around items-center m-2 md:w-3/4 lg:w-1/2 bg-teal-200 rounded-md">
+                    <div className="flex flex-row flex-nowrap justify-around items-center m-2 w-3/4 md:w-1/2">
                         {this.state.palavraBingo.split('').map((letra, index) => {
                             return <HeaderLetreiro key={index} letra={letra} />
                         })}
                     </div>
 
-                    <div className="flex flex-row flex-nowrap justify-around m-2 md:w-3/4 lg:w-1/2">
+                    <div className="flex flex-row flex-nowrap justify-around m-2 w-3/4 md:w-1/2">
                         {this.state.palavraBingo.split('').map((letra, index) => {
                             const posicaoInicial = index * 15;
                             const posicaoFinal = posicaoInicial + 15;
