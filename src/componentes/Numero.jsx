@@ -11,7 +11,7 @@ class Numero extends React.Component {
                 </div>
             )
         } else {
-            return <div className="font-mono text-gray-300">{this.props.valor}</div>
+            return <div className="font-mono text-gray-300 px2 py-1">{this.props.valor}</div>
         }
     }
 }

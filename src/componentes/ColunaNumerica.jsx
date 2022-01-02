@@ -3,7 +3,7 @@ import Numero from "./Numero";
 
 const ColunaNumerica = ({numeros, numeroRecemSorteado}) => {
     return (
-        <div className="flex flex-col flex-nowrap items-center justify-center">
+        <div className="flex flex-1 flex-col flex-nowrap items-center justify-center">
             {numeros.map(numero => {
                 const ehRecemSorteado = numeroRecemSorteado && numero.valor === numeroRecemSorteado.valor
 
