@@ -26,7 +26,7 @@ class App extends React.Component {
             })
         }
 
-        this.setState({ numeros: arrayNumeros })
+        this.setState({ numeros: arrayNumeros, numeroRecemSorteado: null, qtdeNumerosSorteados : 0})
     }
 
     getRandomInt = (max) => {
