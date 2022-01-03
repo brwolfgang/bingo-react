@@ -1,6 +1,7 @@
 import './index.css'
 import React from "react";
 import AcaoSorteio from "./componentes/AcaoSorteio.jsx";
+import AcaoReiniciarSorteio from "./componentes/AcaoReiniciarSorteio";
 import NumeroSorteado from "./componentes/NumeroSorteado.jsx";
 import ColunaNumerica from "./componentes/ColunaNumerica.jsx";
 import HeaderLetreiro from "./componentes/HeaderLetreiro.jsx";
@@ -61,11 +62,19 @@ class App extends React.Component {
         this.setState({ palavraBingo: novaPalavraBingo.trim() })
     }
 
+    handleReinicioSorteio = () => {
+        if (window.confirm('Confirma o reinício do Sorteio? O progresso atual será perdido!')) {
+            this.componentDidMount();
+        }
+    }
+
     render() {
         return (
             <div className="flex flex-col justify-center items-center w-screen h-screen">
                 <div className="flex flex-col justify-center items-center m-2 text-center w-full">
-                    <AcaoSorteio sortearNumero={this.sortearNumero} />
+                    {this.state.qtdeNumerosSorteados <= 75 ? <AcaoSorteio sortearNumero={this.sortearNumero} /> : null}
+
+                    <AcaoReiniciarSorteio reiniciarSorteio={this.handleReinicioSorteio}/>
 
                     {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
 
