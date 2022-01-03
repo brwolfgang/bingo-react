@@ -72,9 +72,11 @@ class App extends React.Component {
         return (
             <div className="flex flex-col justify-center items-center w-screen h-screen">
                 <div className="flex flex-col justify-center items-center m-2 text-center w-full">
-                    {this.state.qtdeNumerosSorteados <= 75 ? <AcaoSorteio sortearNumero={this.sortearNumero} /> : null}
+                    <div className="flex flex-row flex-nowrap">
+                        {this.state.qtdeNumerosSorteados <= 75 ? <AcaoSorteio sortearNumero={this.sortearNumero} /> : null}
 
-                    <AcaoReiniciarSorteio reiniciarSorteio={this.handleReinicioSorteio}/>
+                        <AcaoReiniciarSorteio reiniciarSorteio={this.handleReinicioSorteio}/>
+                    </div>
 
                     {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
 
