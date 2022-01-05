@@ -5,13 +5,15 @@ import AcaoReiniciarSorteio from "./componentes/AcaoReiniciarSorteio";
 import NumeroSorteado from "./componentes/NumeroSorteado.jsx";
 import ColunaNumerica from "./componentes/ColunaNumerica.jsx";
 import HeaderLetreiro from "./componentes/HeaderLetreiro.jsx";
+import Configuracao from "./componentes/Configuracao";
 
 class App extends React.Component {
     state = {
         palavraBingo: 'bingo',
         numeros: [],
         qtdeNumerosSorteados: 0,
-        numeroRecemSorteado: null
+        numeroRecemSorteado: null,
+        exibirConfiguracao: false
     };
 
     componentDidMount() {
@@ -59,7 +61,7 @@ class App extends React.Component {
     }
 
     handleChangePalavraBingo = (novaPalavraBingo) => {
-        this.setState({ palavraBingo: novaPalavraBingo.trim() })
+        this.setState({ palavraBingo: novaPalavraBingo.trim(), exibirConfiguracao: false })
     }
 
     handleReinicioSorteio = () => {
@@ -72,10 +74,14 @@ class App extends React.Component {
         return (
             <div className="flex flex-col justify-center items-center w-screen h-screen">
                 <div className="flex flex-col justify-center items-center m-2 text-center w-full">
+                    {this.state.exibirConfiguracao ? <Configuracao palavraBingo={this.state.palavraBingo} handleChangePalavraBingo={this.handleChangePalavraBingo}/> : null}
+
                     <div className="flex flex-row flex-nowrap">
                         {this.state.qtdeNumerosSorteados <= 75 ? <AcaoSorteio sortearNumero={this.sortearNumero} /> : null}
 
                         <AcaoReiniciarSorteio reiniciarSorteio={this.handleReinicioSorteio}/>
+
+                        <button className="text-white m-1 px-2 py-1 bg-gray-500 hover:bg-gray-600 rounded-md" onClick={() => this.setState({exibirConfiguracao: !this.state.exibirConfiguracao})}>Configurações</button>
                     </div>
 
                     {this.state.numeroRecemSorteado ?  <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}

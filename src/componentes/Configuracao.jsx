@@ -1,7 +1,7 @@
 import React from "react";
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 
-const Configuracao = ({ palavraBingo, handleChangePalavraBingo }) => {
+const Configuracao = ({palavraBingo, handleChangePalavraBingo}) => {
     const formik = useFormik({
         initialValues: {
             palavra: palavraBingo
@@ -11,7 +11,7 @@ const Configuracao = ({ palavraBingo, handleChangePalavraBingo }) => {
 
             if (!values.palavra || !values.palavra.trim()) {
                 errors.palavra = "É necessário definir uma palavra! 👀";
-            } else if(values.palavra.trim().length !== 5) {
+            } else if (values.palavra.trim().length !== 5) {
                 errors.palavra = "A palavra precisa ter 5 caracteres! 👀";
             }
 
@@ -23,49 +23,16 @@ const Configuracao = ({ palavraBingo, handleChangePalavraBingo }) => {
     })
 
     return (
+        <form onSubmit={formik.handleSubmit}
+              className="flex flex-col items-start flex-auto bg-gray-300 rounded-md m-2 px-2 py-1 md:w-1/2 w-3/4">
+            <h1 className="text-left text-2xl self-stretch">Configurações</h1>
 
-        // <div className="modal" tabIndex="-1">
-        //     <div className="modal-dialog">
-        //         <div className="modal-content">
-        //             <div className="modal-header">
-        //                 <h5 className="modal-title">Modal title</h5>
-        //                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-        //                     <span aria-hidden="true">&times;</span>
-        //                 </button>
-        //             </div>
-        //             <div className="modal-body">
-        <form onSubmit={formik.handleSubmit}>
-            <div className="form-row">
-                <div className="col-12">
-                    <div className="form-group text-left">
-                        <label htmlFor="inputPalavraBingo">Nome do Bingo</label>
-                        <input className="form-control" id="palavra" type="text" {...formik.getFieldProps('palavra')}/>
-                        {formik.touched.palavra && formik.errors.palavra ? <div>{formik.errors.palavra}</div> : null}
-                        <small id="inputHelp" className="form-text text-muted">Palavras com 5 letras funcionam melhor 👍</small>
-                    </div>
-                </div>
-            </div>
-            <div className="form-row">
-                <div className="col-12">
-                    <div className="form-group text-center">
-                        <input type="submit" value="Salvar Palavra" className="btn btn-primary"/>
-                    </div>
-                </div>
-            </div>
+            <label htmlFor="inputPalavraBingo" className="text">Nome do Bingo</label>
+            <input id="palavra" type="text"
+                   className="bg-gray-100 rounded-md px-1" {...formik.getFieldProps('palavra')}/>
+            {formik.touched.palavra && formik.errors.palavra ? <div>{formik.errors.palavra}</div> : null}
+            <input type="submit" value="Salvar Palavra" className="bg-green-600 text-white py-1 px-2 rounded-md mt-2 mb-2"/>
         </form>
-        // </div>
-        //             <div className="modal-footer">
-        //                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        //                 <button type="button" className="btn btn-primary">Save changes</button>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
-
-
-
-
-
     )
 }
 
