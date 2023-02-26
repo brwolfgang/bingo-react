@@ -5,16 +5,17 @@ export type ConfiguracaoProps = {
 
 export type AppState = {
   palavraBingo: string,
-  numeros: NumeroType[],
+  numeros: NumeroSorteadoType[],
   qtdeNumerosSorteados: number,
   numeroRecemSorteado?: NumeroSorteadoType,
   exibirConfiguracao: boolean
 }
 
 export type NumeroSorteadoType = {
-  letra: string
+  valor: number
+  letra?: string
   sorteado: boolean,
-  ordem: number
+  ordem?: number
 }
 
 export type ReinicioSorteioProps = {
@@ -24,12 +25,5 @@ export type ReinicioSorteioProps = {
 export type NumeroProps = {
   isSorteado: boolean,
   valor: number,
-  ordem: number
-}
-
-export type NumeroType = {
-  valor: number,
-  sorteado: boolean,
-  letra?: string
-  order?: number
+  ordem?: number
 }

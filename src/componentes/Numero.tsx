@@ -1,5 +1,5 @@
 import React from "react";
-import IconCheck from "../icons/IconCheck.js";
+import IconCheck from "../icons/IconCheck";
 import {NumeroProps} from "../types";
 
 class Numero extends React.Component<NumeroProps, any> {

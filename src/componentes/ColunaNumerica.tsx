@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Numero from "./Numero";
+import {NumeroSorteadoType} from "../types";
 
 
-const ColunaNumerica = ({numeros, numeroRecemSorteado}) => {
+const ColunaNumerica = (props: {numeros: NumeroSorteadoType[], numeroRecemSorteado?: NumeroSorteadoType}) => {
     return (
         <div className="flex flex-1 flex-col flex-nowrap items-center justify-center">
-            {numeros.map(numero => {
-                const ehRecemSorteado = numeroRecemSorteado && numero.valor === numeroRecemSorteado.valor
+            {props.numeros.map(numero => {
+                const ehRecemSorteado = props.numeroRecemSorteado && numero.valor === props.numeroRecemSorteado.valor
 
                 if (ehRecemSorteado) {
                     return (
@@ -22,7 +23,7 @@ const ColunaNumerica = ({numeros, numeroRecemSorteado}) => {
     )
 }
 
-const gerarInfoNumeros = (numero: {valor: number, sorteado: boolean, ordem: number}) => {
+const gerarInfoNumeros = (numero: NumeroSorteadoType) => {
     return <Numero key={numero.valor} valor={numero.valor} isSorteado={numero.sorteado} ordem={numero.ordem}/>
 }
 

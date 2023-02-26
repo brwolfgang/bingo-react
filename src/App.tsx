@@ -6,7 +6,7 @@ import NumeroSorteado from "./componentes/NumeroSorteado";
 import ColunaNumerica from "./componentes/ColunaNumerica";
 import HeaderLetreiro from "./componentes/HeaderLetreiro";
 import Configuracao from "./componentes/Configuracao";
-import {AppState, NumeroSorteadoType, NumeroType} from "./types";
+import {AppState, NumeroSorteadoType} from "./types";
 
 class App extends React.Component<any, AppState> {
     constructor(props: any) {
@@ -22,7 +22,7 @@ class App extends React.Component<any, AppState> {
     }
 
     componentDidMount() {
-        let arrayNumeros: NumeroType[] = [];
+        let arrayNumeros: NumeroSorteadoType[] = [];
 
         for (let i = 0; i < 75; i++) {
             arrayNumeros.push({
@@ -36,7 +36,7 @@ class App extends React.Component<any, AppState> {
         this.setState({ numeros: arrayNumeros, numeroRecemSorteado: undefined, qtdeNumerosSorteados : 0})
     }
 
-    getRandomInt = (max) => {
+    getRandomInt = (max: number) => {
         return Math.floor(Math.random() * max);
     }
 
