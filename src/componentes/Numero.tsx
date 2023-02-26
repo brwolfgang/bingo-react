@@ -1,7 +1,8 @@
 import React from "react";
-import IconCheck from "../icons/IconCheck";
+import IconCheck from "../icons/IconCheck.js";
+import {NumeroProps} from "../types";
 
-class Numero extends React.Component {
+class Numero extends React.Component<NumeroProps, any> {
     render() {
         if (this.props.isSorteado) {
             return (

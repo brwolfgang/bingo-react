@@ -1,34 +1,39 @@
 import './index.css'
-import React from "react";
-import AcaoSorteio from "./componentes/AcaoSorteio.jsx";
+import * as React from 'react';
+import AcaoSorteio from "./componentes/AcaoSorteio";
 import AcaoReiniciarSorteio from "./componentes/AcaoReiniciarSorteio";
-import NumeroSorteado from "./componentes/NumeroSorteado.jsx";
-import ColunaNumerica from "./componentes/ColunaNumerica.jsx";
-import HeaderLetreiro from "./componentes/HeaderLetreiro.jsx";
+import NumeroSorteado from "./componentes/NumeroSorteado";
+import ColunaNumerica from "./componentes/ColunaNumerica";
+import HeaderLetreiro from "./componentes/HeaderLetreiro";
 import Configuracao from "./componentes/Configuracao";
+import {AppState, NumeroSorteadoType, NumeroType} from "./types";
 
-class App extends React.Component {
-    state = {
-        palavraBingo: 'bingo',
-        numeros: [],
-        qtdeNumerosSorteados: 0,
-        numeroRecemSorteado: null,
-        exibirConfiguracao: false
-    };
+class App extends React.Component<any, AppState> {
+    constructor(props: any) {
+        super(props);
+
+        this.state = {
+            palavraBingo: 'bingo',
+            numeros: [],
+            qtdeNumerosSorteados: 0,
+            numeroRecemSorteado: undefined,
+            exibirConfiguracao: false
+        }
+    }
 
     componentDidMount() {
-        let arrayNumeros = [];
+        let arrayNumeros: NumeroType[] = [];
 
         for (let i = 0; i < 75; i++) {
             arrayNumeros.push({
                 valor: i + 1,
                 sorteado: false,
-                letra: null,
-                ordem: null
+                letra: undefined,
+                ordem: undefined
             })
         }
 
-        this.setState({ numeros: arrayNumeros, numeroRecemSorteado: null, qtdeNumerosSorteados : 0})
+        this.setState({ numeros: arrayNumeros, numeroRecemSorteado: undefined, qtdeNumerosSorteados : 0})
     }
 
     getRandomInt = (max) => {
@@ -41,7 +46,7 @@ class App extends React.Component {
             return;
         }
 
-        let numeroBingo = null;
+        let numeroBingo: NumeroSorteadoType;
 
         while (true) {
             let numeroSorteado = this.getRandomInt(75) + 1;
@@ -49,10 +54,9 @@ class App extends React.Component {
             numeroBingo = this.state.numeros[numeroSorteado - 1];
 
             if (!numeroBingo.sorteado) {
-                console.log('Numero sorteado', numeroBingo);
-
                 numeroBingo.sorteado = true;
                 numeroBingo.ordem = this.state.qtdeNumerosSorteados + 1;
+                console.log('Numero sorteado', numeroBingo);
                 break;
             }
         }
@@ -60,7 +64,7 @@ class App extends React.Component {
         this.setState({ qtdeNumerosSorteados: this.state.qtdeNumerosSorteados + 1, numeroRecemSorteado: numeroBingo });
     }
 
-    handleChangePalavraBingo = (novaPalavraBingo) => {
+    handleChangePalavraBingo = (novaPalavraBingo: string) => {
         this.setState({ palavraBingo: novaPalavraBingo.trim(), exibirConfiguracao: false })
     }
 
@@ -97,13 +101,12 @@ class App extends React.Component {
                             const posicaoInicial = index * 15;
                             const posicaoFinal = posicaoInicial + 15;
 
-                            const numeros = this.state.numeros.slice(posicaoInicial, posicaoFinal);
+                            const numeros: NumeroSorteadoType[] = this.state.numeros.slice(posicaoInicial, posicaoFinal);
 
                             numeros.forEach((numero) => numero.letra = letra.toUpperCase())
 
                             return <ColunaNumerica key={index} numeros={numeros} numeroRecemSorteado={this.state.numeroRecemSorteado}/>
                         })}
-
                     </div>
                 </div>
             </div>
@@ -111,4 +114,4 @@ class App extends React.Component {
     }
 }
 
-export default App; 
+export default App;

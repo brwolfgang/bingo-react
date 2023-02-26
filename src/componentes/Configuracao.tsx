@@ -1,13 +1,14 @@
-import React from "react";
-import {useFormik} from "formik";
+import * as React from 'react';
+import {useFormik, FormikErrors} from "formik";
+import {ConfiguracaoProps} from "../types";
 
-const Configuracao = ({palavraBingo, handleChangePalavraBingo}) => {
+const Configuracao = ({palavraBingo, handleChangePalavraBingo}: ConfiguracaoProps) => {
     const formik = useFormik({
         initialValues: {
             palavra: palavraBingo
         },
         validate: (values) => {
-            const errors = {};
+            const errors: FormikErrors<any> = {};
 
             if (!values.palavra || !values.palavra.trim()) {
                 errors.palavra = "É necessário definir uma palavra! 👀";

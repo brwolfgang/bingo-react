@@ -1,5 +1,6 @@
-import React from "react";
+import * as React from 'react';
 import Numero from "./Numero";
+
 
 const ColunaNumerica = ({numeros, numeroRecemSorteado}) => {
     return (
@@ -21,7 +22,7 @@ const ColunaNumerica = ({numeros, numeroRecemSorteado}) => {
     )
 }
 
-const gerarInfoNumeros = (numero) => {
+const gerarInfoNumeros = (numero: {valor: number, sorteado: boolean, ordem: number}) => {
     return <Numero key={numero.valor} valor={numero.valor} isSorteado={numero.sorteado} ordem={numero.ordem}/>
 }
 

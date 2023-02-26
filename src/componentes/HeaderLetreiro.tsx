@@ -1,11 +1,11 @@
-import React from "react";
+import * as React from 'react';
 
 const estiloLetra = {
     fontSize: '36px',
     fontFamily: 'monospace'
 }
 
-const HeaderLetreiro = (props) => {
+const HeaderLetreiro = (props: {letra: string}) => {
     return (
         <div className="flex flex-col flex-nowrap py-1 items-center">
             <dt>Letra</dt>
