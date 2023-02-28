@@ -1,11 +1,10 @@
 import * as React from 'react';
-import {useFormik, FormikErrors} from "formik";
-import {ConfiguracaoProps} from "../types";
+import {FormikErrors, useFormik} from "formik";
 
-const Configuracao = ({palavraBingo, handleChangePalavraBingo}: ConfiguracaoProps) => {
+const Configuracao = (props: {palavraBingo: string, handleChangePalavraBingo: (novaPalavra: string) => void}) => {
     const formik = useFormik({
         initialValues: {
-            palavra: palavraBingo
+            palavra: props.palavraBingo
         },
         validate: (values) => {
             const errors: FormikErrors<any> = {};
@@ -19,7 +18,7 @@ const Configuracao = ({palavraBingo, handleChangePalavraBingo}: ConfiguracaoProp
             return errors;
         },
         onSubmit: values => {
-            handleChangePalavraBingo(values.palavra)
+            props.handleChangePalavraBingo(values.palavra)
         }
     })
 

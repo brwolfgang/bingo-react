@@ -24,7 +24,7 @@ const ColunaNumerica = (props: {numeros: NumeroSorteadoType[], numeroRecemSortea
 }
 
 const gerarInfoNumeros = (numero: NumeroSorteadoType) => {
-    return <Numero key={numero.valor} valor={numero.valor} isSorteado={numero.sorteado} ordem={numero.ordem}/>
+    return <Numero key={numero.valor}  numero={numero}/>
 }
 
 export default ColunaNumerica;
