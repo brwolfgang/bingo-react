@@ -1,9 +1,15 @@
 export type AppState = {
-  palavraBingo: string,
+  palavraBingo: string
+}
+
+export type PainelBingoProps = {
+  palavraBingo: string
+}
+
+export type PainelBingoState = {
   numeros: NumeroSorteadoType[],
   qtdeNumerosSorteados: number,
   numeroRecemSorteado?: NumeroSorteadoType,
-  exibirConfiguracao: boolean
 }
 
 export type NumeroSorteadoType = {

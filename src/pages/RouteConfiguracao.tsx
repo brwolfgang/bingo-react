@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {FormikErrors, useFormik} from "formik";
 
-const Configuracao = (props: {palavraBingo: string, handleChangePalavraBingo: (novaPalavra: string) => void}) => {
+const RouteConfiguracao = (props: {palavraBingo: string, handleChangePalavraBingo: (novaPalavra: string) => void}) => {
     const formik = useFormik({
         initialValues: {
             palavra: props.palavraBingo
@@ -36,4 +36,4 @@ const Configuracao = (props: {palavraBingo: string, handleChangePalavraBingo: (n
     )
 }
 
-export default Configuracao;
+export default RouteConfiguracao;
