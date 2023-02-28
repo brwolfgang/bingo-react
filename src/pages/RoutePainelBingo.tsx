@@ -52,7 +52,6 @@ export default class RoutePainelBingo extends React.Component<PainelBingoProps, 
       if (!numeroBingo.sorteado) {
         numeroBingo.sorteado = true;
         numeroBingo.ordem = this.state.qtdeNumerosSorteados + 1;
-        console.log('Numero sorteado', numeroBingo);
         break;
       }
     }
