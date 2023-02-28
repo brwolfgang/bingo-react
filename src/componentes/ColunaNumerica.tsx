@@ -11,20 +11,16 @@ const ColunaNumerica = (props: {numeros: NumeroSorteadoType[], numeroRecemSortea
 
                 if (ehRecemSorteado) {
                     return (
-                        <div className="bg-yellow-400 rounded-md shadow">
-                            {gerarInfoNumeros(numero)}
+                        <div key={numero.valor} className="bg-yellow-400 rounded-md shadow">
+                            <Numero key={numero.valor} numero={numero}/>
                         </div>
                     );
                 } else {
-                    return gerarInfoNumeros(numero)
+                    return <Numero key={numero.valor} numero={numero}/>
                 }
             })}
         </div>
     )
-}
-
-const gerarInfoNumeros = (numero: NumeroSorteadoType) => {
-    return <Numero key={numero.valor}  numero={numero}/>
 }
 
 export default ColunaNumerica;
