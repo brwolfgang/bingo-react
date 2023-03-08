@@ -16,7 +16,11 @@ class App extends React.Component<any, AppState> {
   }
 
   handleChangePalavraBingo = (novaPalavraBingo: string) => {
-    this.setState({palavraBingo: novaPalavraBingo.trim()})
+    if (!isEmpty(novaPalavraBingo)) {
+      this.setState({palavraBingo: novaPalavraBingo.trim()})
+    } else {
+      alert("A nova palavra não pode ser vazia")
+    }
   }
 
   render() {
