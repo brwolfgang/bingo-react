@@ -1,6 +1,5 @@
 import * as React from 'react';
 import AcaoSorteio from "../componentes/AcaoSorteio";
-import AcaoReiniciarSorteio from "../componentes/AcaoReiniciarSorteio";
 import NumeroSorteado from "../componentes/NumeroSorteado";
 import HeaderLetreiro from "../componentes/HeaderLetreiro";
 import ColunaNumerica from "../componentes/ColunaNumerica";
@@ -71,11 +70,8 @@ export default class RoutePainelBingo extends React.Component<PainelBingoProps, 
         <div className="flex flex-row flex-nowrap">
           {this.state.qtdeNumerosSorteados <= 75 ? <AcaoSorteio sortearNumero={this.sortearNumero}/> : null}
 
-          <AcaoReiniciarSorteio reiniciarSorteio={this.handleReinicioSorteio}/>
+          <button className="text-white bg-red-400 hover:text-white hover:bg-red-700 px-2 py-1 m-1 rounded-md shadow" onClick={this.handleReinicioSorteio}>Reiniciar Sorteio!</button>
 
-          {/*<button className="text-white m-1 px-2 py-1 bg-gray-500 hover:bg-gray-600 rounded-md"*/}
-          {/*        onClick={() => this.setState({exibirConfiguracao: !this.state.exibirConfiguracao})}>Configurações*/}
-          {/*</button>*/}
         </div>
 
         {this.state.numeroRecemSorteado ? <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
