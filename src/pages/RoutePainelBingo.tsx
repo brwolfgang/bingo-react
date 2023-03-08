@@ -81,8 +81,8 @@ export default class RoutePainelBingo extends React.Component<PainelBingoProps, 
         {this.state.numeroRecemSorteado ? <NumeroSorteado numeroSorteado={this.state.numeroRecemSorteado}/> : ''}
 
         <div className="flex flex-row flex-nowrap justify-around items-center m-2 w-3/4 md:w-1/2">
-          {this.props.palavraBingo.split('').map((letra, index) => {
-            return <HeaderLetreiro key={index} letra={letra}/>
+          {this.props.palavraBingo.split('').map((letra) => {
+            return <HeaderLetreiro key={letra} letra={letra}/>
           })}
         </div>
 
