@@ -25,7 +25,8 @@ class App extends React.Component<any, AppState> {
 
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        {/* Corrige tela em branco após instalação do Github Pages: https://stackoverflow.com/questions/54427793/getting-blank-page-after-react-app-publish-in-github */}
         <Routes>
           <Route path="/" element={<RouteLayout/>}>
             <Route index element={<RoutePainelBingo palavraBingo={this.state.palavraBingo}/>}/>
